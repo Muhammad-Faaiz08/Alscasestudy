@@ -1,0 +1,274 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Warm color palette for ALS case study */
+  --background: #FFF8F0;
+  --foreground: #2C1810;
+  --card: #FFFFFF;
+  --card-foreground: #2C1810;
+  --popover: #FFFFFF;
+  --popover-foreground: #2C1810;
+  
+  /* Primary: Rich Terracotta/Burnt Orange */
+  --primary: #C85A3E;
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary: Warm Gold */
+  --secondary: #D4A574;
+  --secondary-foreground: #2C1810;
+  
+  /* Accent: Deep Green */
+  --accent: #5A7F5F;
+  --accent-foreground: #FFFFFF;
+  
+  /* Muted: Light Cream */
+  --muted: #F5EEE6;
+  --muted-foreground: #6B5D52;
+  
+  --destructive: #B83232;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: rgba(200, 90, 62, 0.15);
+  --input: transparent;
+  --input-background: #F5EEE6;
+  --switch-background: #D4A574;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #C85A3E;
+  
+  /* Chart colors in warm tones */
+  --chart-1: #C85A3E;
+  --chart-2: #D4A574;
+  --chart-3: #5A7F5F;
+  --chart-4: #A67C52;
+  --chart-5: #8B4513;
+  
+  --radius: 0.75rem;
+  
+  --sidebar: #FFF8F0;
+  --sidebar-foreground: #2C1810;
+  --sidebar-primary: #C85A3E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F5EEE6;
+  --sidebar-accent-foreground: #2C1810;
+  --sidebar-border: rgba(200, 90, 62, 0.15);
+  --sidebar-ring: #C85A3E;
+}
+
+.dark {
+  --background: #1A120E;
+  --foreground: #F5EEE6;
+  --card: #2C1810;
+  --card-foreground: #F5EEE6;
+  --popover: #2C1810;
+  --popover-foreground: #F5EEE6;
+  --primary: #E07855;
+  --primary-foreground: #FFFFFF;
+  --secondary: #D4A574;
+  --secondary-foreground: #1A120E;
+  --muted: #3D2B1F;
+  --muted-foreground: #B8A491;
+  --accent: #6B9270;
+  --accent-foreground: #FFFFFF;
+  --destructive: #D84545;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(212, 165, 116, 0.2);
+  --input: #3D2B1F;
+  --ring: #E07855;
+  
+  --chart-1: #E07855;
+  --chart-2: #D4A574;
+  --chart-3: #6B9270;
+  --chart-4: #B8895C;
+  --chart-5: #A0613A;
+  
+  --sidebar: #2C1810;
+  --sidebar-foreground: #F5EEE6;
+  --sidebar-primary: #E07855;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #3D2B1F;
+  --sidebar-accent-foreground: #F5EEE6;
+  --sidebar-border: rgba(212, 165, 116, 0.2);
+  --sidebar-ring: #E07855;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* Custom animations for case study */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
